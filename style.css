@@ -1,0 +1,51 @@
+:root {
+    --dot-size: 8px;
+    --dot-border-size: 4px;
+    --circle-radius: 200px;
+
+    --background: 50,50,50;
+    --color: 200,200,200;
+}
+
+body {
+    margin: 0;
+    padding: 0 50px;
+    height: 100vh;
+
+    display: grid;
+    grid-template-rows: 200px 1fr;
+
+    background: rgb(var(--background));
+}
+
+#interactions {
+    z-index: 100000;
+    background: rgb(var(--background));
+}
+
+#canvas * {
+    position: absolute;
+}
+
+.dot {
+    height: var(--dot-size);
+    width: var(--dot-size);
+
+    margin: calc(var(--dot-size) / -2) 0 0 calc(var(--dot-size) / -2);
+    box-sizing: border-box;
+
+    background: rgb(var(--color));
+    border-radius: calc(var(--dot-size) / 2);
+    box-shadow: 0 0 0 var(--dot-border-size) rgba(var(--color), .1);
+}
+
+.circle {
+    height: calc(var(--circle-radius) * 2);
+    width: calc(var(--circle-radius) * 2);
+
+    margin: calc(var(--circle-radius) * -1) 0 0 calc(var(--circle-radius) * -1);
+    box-sizing: border-box;
+
+    border-radius: var(--circle-radius);
+    border: 1px solid rgb(var(--color));
+}
