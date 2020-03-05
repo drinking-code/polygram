@@ -11,6 +11,10 @@ function setRadius() {
     updatePoints()
 }
 
+Math.rad = function(degrees) {
+    return degrees * Math.PI / 180;
+};
+
 //set offset according to viewport size
 let offsetX = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) / 2,
     offsetY = (Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - 200) / 2;
