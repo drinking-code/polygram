@@ -4,6 +4,7 @@ $('input[name="n"]').addEventListener("input", getNGram);
 function getNGram() {
     gram = $('input[name="n"]').value;
     setPoints();
+    drawLines();
 }
 
 function setPoints() {

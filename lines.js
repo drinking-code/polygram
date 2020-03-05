@@ -1,5 +1,12 @@
 function drawLines() {
-    let canvas = document.createElementNS('http://www.w3.org/2000/svg', "svg");
+    let canvas = $("#canvas");
+    if (canvas) {
+        canvas.remove();
+        console.log(
+            "canvas removed"
+        )
+    }
+    canvas = document.createElementNS('http://www.w3.org/2000/svg', "svg");
     canvas.id = "canvas";
     $$(".dot").forEach(elm => {
         const thisID = Number(elm.id.replace("d-", ""));
@@ -30,3 +37,7 @@ function drawLines() {
 }
 
 drawLines();
+
+function updateLines() {
+
+}
