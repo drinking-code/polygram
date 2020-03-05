@@ -11,15 +11,13 @@ function setPoints() {
         elm.remove();
     });
     for (let i = 0; gram > i; i++) {
-        canvas.addChild("div", {class: "dot", id: "d-" + i});
+        scribble.addChild("div", {class: "dot", id: "d-" + i});
     }
     updatePoints()
 }
 
 function update(elm, index) {
-    console.log(index, gram);
     const angle = index / gram * 360;
-    console.log(angle);
     const a = Math.cos(Math.rad(angle));
     const t = a * circleRadius;
     elm.style.left = t + "px";
@@ -34,7 +32,6 @@ function update(elm, index) {
 
 function updatePoints() {
     $$(".dot").forEach((point, index) => {
-        console.log(index)
         update(point, index);
     })
 }

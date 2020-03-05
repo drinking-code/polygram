@@ -51,7 +51,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 }
 
-#canvas * {
+#scribble * {
     position: absolute;
 }
 
@@ -76,4 +76,19 @@ input[type="range"]::-webkit-slider-thumb {
 
     border-radius: var(--circle-radius);
     border: 2px solid rgba(var(--color), .5);
+}
+
+#canvas {
+    position: absolute;
+    top: 200px;
+    left: 0;
+
+    height: calc(100vh - 200px);
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+svg#canvas * {
+    stroke: rgb(var(--color));
+    stroke-width: 2px;
 }

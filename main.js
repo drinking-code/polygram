@@ -1,7 +1,7 @@
 $ = selector => document.querySelector(selector);
 $$ = selector => document.querySelectorAll(selector);
 
-const canvas = $("#canvas");
+const scribble = $("#scribble");
 
 let circleRadius = 200;
 $('input[name="size"]').addEventListener("input", setRadius);
@@ -71,13 +71,13 @@ HTMLElement.prototype.addChild = function (tag, attributes, position) {
     this.appendChild(elm);
 };
 
-canvas.addChild("div", {class: "circle"});
+scribble.addChild("div", {class: "circle"});
 
 
-//set offset for every canvas child element
+//set offset for every scribble child element
 {
-    const canvasChildren = canvas.childNodes;
-    canvasChildren.forEach(child => {
+    const scribbleChildren = scribble.childNodes;
+    scribbleChildren.forEach(child => {
         //check if child is a HTML element
         if (!child.addChild) {return}
         addOffset(child);
