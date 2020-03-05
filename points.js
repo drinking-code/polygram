@@ -1,11 +1,25 @@
-$('input[name="angle"]').addEventListener("input", function() {
-    update($("#d-1"));
-});
+let gram;
+getNGram();
+$('input[name="n"]').addEventListener("input", getNGram);
+function getNGram() {
+    gram = $('input[name="n"]').value;
+    setPoints();
+}
 
-update($("#d-1"));
+function setPoints() {
+    $$(".dot").forEach(elm => {
+        elm.remove();
+    });
+    for (let i = 0; gram > i; i++) {
+        canvas.addChild("div", {class: "dot", id: "d-" + i});
+    }
+    updatePoints()
+}
 
-function update(elm) {
-    const angle = $('input[name="angle"]').value;
+function update(elm, index) {
+    console.log(index, gram);
+    const angle = index / gram * 360;
+    console.log(angle);
     const a = Math.cos(Math.rad(angle));
     const t = a * circleRadius;
     elm.style.left = t + "px";
@@ -19,7 +33,8 @@ function update(elm) {
 }
 
 function updatePoints() {
-    $$(".dot").forEach(point => {
-        update(point);
+    $$(".dot").forEach((point, index) => {
+        console.log(index)
+        update(point, index);
     })
 }

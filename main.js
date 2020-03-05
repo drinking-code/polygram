@@ -31,6 +31,10 @@ Object.prototype.forEach = function (func) {
     }
 };
 
+HTMLElement.prototype.remove = function () {
+    this.parentNode.removeChild(this)
+};
+
 HTMLElement.prototype.addChild = function (tag, attributes, position) {
     //create node
     let elm = document.createElement(tag);
@@ -68,7 +72,6 @@ HTMLElement.prototype.addChild = function (tag, attributes, position) {
 };
 
 canvas.addChild("div", {class: "circle"});
-canvas.addChild("div", {class: "dot", id: "d-1"});
 
 
 //set offset for every canvas child element
