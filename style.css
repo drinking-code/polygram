@@ -1,5 +1,5 @@
 :root {
-    --dot-size: 8px;
+    --dot-size: 10px;
     --dot-border-size: 4px;
     --circle-radius: 200px;
 
@@ -9,7 +9,7 @@
 
 body {
     margin: 0;
-    padding: 0 50px;
+    padding: 0 100px;
     height: 100vh;
 
     display: grid;
@@ -21,6 +21,34 @@ body {
 #interactions {
     z-index: 100000;
     background: rgb(var(--background));
+
+    display: flex;
+    align-items: center;
+}
+
+input[type="range"] {
+    width: 200px;
+    height: 4px;
+
+    margin: 0 50px 0 0;
+    padding: 0;
+
+    -webkit-appearance: none;
+    background: rgba(var(--color), .5);
+    border-radius: 2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    height: var(--dot-size);
+    width: var(--dot-size);
+
+    -webkit-appearance: none;
+    background: rgb(var(--color));
+    border-radius: calc(var(--dot-size) / 2);
+    box-shadow: 0 0 0 var(--dot-border-size) rgba(var(--color), .2);
+
+    cursor: pointer;
+
 }
 
 #canvas * {
@@ -47,5 +75,5 @@ body {
     box-sizing: border-box;
 
     border-radius: var(--circle-radius);
-    border: 1px solid rgb(var(--color));
+    border: 2px solid rgba(var(--color), .5);
 }
