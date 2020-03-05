@@ -8,7 +8,8 @@ $('input[name="size"]').addEventListener("input", setRadius);
 function setRadius() {
     circleRadius = $('input[name="size"]').value;
     $("html").style.setProperty("--circle-radius", circleRadius + "px");
-    updatePoints()
+    updatePoints();
+    updateLines();
 }
 
 Math.rad = function(degrees) {

@@ -24,11 +24,8 @@ function drawLines() {
         const p2y = p2.style.top.replace("px", "") - 200;
 
         let line = document.createElementNS('http://www.w3.org/2000/svg', "line");
-        const data = {x1: p1x, x2: p2x, y1: p1y, y2: p2y};
+        const data = {x1: p1x, x2: p2x, y1: p1y, y2: p2y, id: "l-" + thisID};
         data.forEach((value, attr) => {
-            attr = attr.replace(/([A-Z])/g, function (word) {
-                return "-" + word;
-            }).toLowerCase();
             line.setAttribute(attr, value);
         });
         canvas.appendChild(line);
@@ -39,5 +36,27 @@ function drawLines() {
 drawLines();
 
 function updateLines() {
+    $$("#canvas line").forEach(elm => {
+        const thisID = Number(elm.id.replace("l-", ""));
+        //get position of this point and #+2 point
+        const p1 = $("#d-" + thisID);
+        const p1x = p1.style.left.replace("px", "");
+        const p1y = p1.style.top.replace("px", "") - 200;
+        let nextID;
+        if (thisID + 2 > gram - 1) {
+            nextID = thisID + 2 - gram;
+        } else {
+            nextID = thisID + 2;
+        }
+        const p2 = $("#d-" + nextID);
+        const p2x = p2.style.left.replace("px", "");
+        const p2y = p2.style.top.replace("px", "") - 200;
 
+        const data = {x1: p1x, x2: p2x, y1: p1y, y2: p2y};
+        console.log(data);
+
+        data.forEach((value, attr) => {
+            elm.setAttribute(attr, value);
+        });
+    });
 }
