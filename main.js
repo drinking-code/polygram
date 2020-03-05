@@ -3,6 +3,14 @@ $$ = selector => document.querySelectorAll(selector);
 
 const canvas = $("#canvas");
 
+let circleRadius = 200;
+$('input[name="size"]').addEventListener("input", setRadius);
+function setRadius() {
+    circleRadius = $('input[name="size"]').value;
+    $("html").style.setProperty("--circle-radius", circleRadius + "px");
+    updatePoints()
+}
+
 //set offset according to viewport size
 let offsetX = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) / 2,
     offsetY = (Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - 200) / 2;
@@ -56,17 +64,20 @@ HTMLElement.prototype.addChild = function (tag, attributes, position) {
 };
 
 canvas.addChild("div", {class: "circle"});
-canvas.addChild("div", {class: "dot"});
+canvas.addChild("div", {class: "dot", id: "d-1"});
 
 
 //set offset for every canvas child element
 {
     const canvasChildren = canvas.childNodes;
-    console.log(canvasChildren);
     canvasChildren.forEach(child => {
         //check if child is a HTML element
         if (!child.addChild) {return}
-        child.style.left = (Number(child.style.left.replace("px", "")) + offsetX) + "px";
-        child.style.top = (Number(child.style.top.replace("px", "")) + offsetY + 200) + "px";
+        addOffset(child);
     })
+}
+
+function addOffset(elm) {
+    elm.style.left = (Number(elm.style.left.replace("px", "")) + offsetX) + "px";
+    elm.style.top = (Number(elm.style.top.replace("px", "")) + offsetY + 200) + "px";
 }
