@@ -1,10 +1,15 @@
+let step = 1;
+
+function setSteps() {
+    step = Math.round(gram / 2 - 1);
+    console.log(step)
+}
+
 function drawLines() {
+    setSteps();
     let canvas = $("#canvas");
     if (canvas) {
         canvas.remove();
-        console.log(
-            "canvas removed"
-        )
     }
     canvas = document.createElementNS('http://www.w3.org/2000/svg', "svg");
     canvas.id = "canvas";
@@ -14,10 +19,10 @@ function drawLines() {
         const p1x = elm.style.left.replace("px", "");
         const p1y = elm.style.top.replace("px", "") - 200;
         let nextID;
-        if (thisID + 2 > gram - 1) {
-            nextID = thisID + 2 - gram;
+        if (thisID + step > gram - 1) {
+            nextID = thisID + step - gram;
         } else {
-            nextID = thisID + 2;
+            nextID = thisID + step;
         }
         const p2 = $("#d-" + nextID);
         const p2x = p2.style.left.replace("px", "");
@@ -33,9 +38,10 @@ function drawLines() {
     document.body.appendChild(canvas);
 }
 
-drawLines();
+setTimeout(drawLines, 10);
 
 function updateLines() {
+    setSteps();
     $$("#canvas line").forEach(elm => {
         const thisID = Number(elm.id.replace("l-", ""));
         //get position of this point and #+2 point
@@ -43,10 +49,10 @@ function updateLines() {
         const p1x = p1.style.left.replace("px", "");
         const p1y = p1.style.top.replace("px", "") - 200;
         let nextID;
-        if (thisID + 2 > gram - 1) {
-            nextID = thisID + 2 - gram;
+        if (thisID + step > gram - 1) {
+            nextID = thisID + step - gram;
         } else {
-            nextID = thisID + 2;
+            nextID = thisID + step;
         }
         const p2 = $("#d-" + nextID);
         const p2x = p2.style.left.replace("px", "");
