@@ -16,6 +16,12 @@ Math.rad = function(degrees) {
     return degrees * Math.PI / 180;
 };
 
+Node.prototype.trigger = function(event) {
+    let evt = document.createEvent("HTMLEvents");
+    evt.initEvent(event, false, true);
+    this.dispatchEvent(evt);
+};
+
 //set offset according to viewport size
 let offsetX = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) / 2,
     offsetY = (Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - 200) / 2;

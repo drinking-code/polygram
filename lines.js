@@ -2,7 +2,6 @@ let step = 1;
 
 function setSteps() {
     step = Math.round(gram / 2 - 1);
-    console.log(step)
 }
 
 function drawLines() {
@@ -59,7 +58,6 @@ function updateLines() {
         const p2y = p2.style.top.replace("px", "") - 200;
 
         const data = {x1: p1x, x2: p2x, y1: p1y, y2: p2y};
-        console.log(data);
 
         data.forEach((value, attr) => {
             elm.setAttribute(attr, value);
