@@ -4,6 +4,9 @@ function setSteps() {
     step = Math.round(gram / 2 - 1);
 }
 
+const draw = new Event("draw");
+
+
 function getCoords(id) {
     const thisID = id;
     const p1 = $("#d-" + thisID);
@@ -44,7 +47,7 @@ function drawLines() {
         });
         canvas.appendChild(line);
     });
-    document.body.appendChild(canvas);
+    document.body.add(canvas);
 }
 
 setTimeout(drawLines, 10);

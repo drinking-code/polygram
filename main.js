@@ -1,6 +1,3 @@
-$ = selector => document.querySelector(selector);
-$$ = selector => document.querySelectorAll(selector);
-
 const scribble = $("#scribble");
 
 let circleRadius = 200;
@@ -11,16 +8,6 @@ function setRadius() {
     updatePoints();
     updateLines();
 }
-
-Math.rad = function(degrees) {
-    return degrees * Math.PI / 180;
-};
-
-Node.prototype.trigger = function(event) {
-    let evt = document.createEvent("HTMLEvents");
-    evt.initEvent(event, false, true);
-    this.dispatchEvent(evt);
-};
 
 //set offset according to viewport size
 let offsetX = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) / 2,
@@ -36,10 +23,6 @@ Object.prototype.forEach = function (func) {
         }
         func(this[n], n);
     }
-};
-
-HTMLElement.prototype.remove = function () {
-    this.parentNode.removeChild(this)
 };
 
 HTMLElement.prototype.addChild = function (tag, attributes, position) {
@@ -75,11 +58,10 @@ HTMLElement.prototype.addChild = function (tag, attributes, position) {
         elm.style.top = "0px"
     }
     //append child
-    this.appendChild(elm);
+    this.add(elm);
 };
 
 scribble.addChild("div", {class: "circle"});
-
 
 //set offset for every scribble child element
 {

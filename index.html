@@ -2,23 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Polygram Generator</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="panel.css">
+    <script src="definitions.js"></script>
 </head>
 <body>
-<div id="interactions">
-    <input type="range" name="angle" min="0" max="360" value="0">
-    <input type="range" name="size" min="100" max="622" value="200">
-    <input type="number" name="n" min="3" max="100" value="7" step="1">
+<div id="panel">
+    <div id="interactions">
+        <input type="range" name="angle" min="0" max="360" value="0" hidden>
+        <input type="range" name="size" min="100" max="622" value="200">
+        <input type="number" name="n" min="3" max="100" value="7" step="1">
+    </div>
+
+    <div id="name">{7/3}</div>
+    <div class="angles"></div>
 </div>
-<div id="scribble">
-<!--    <div class="dot"></div>-->
-</div>
+<div id="scribble"></div>
 
 <script src="main.js"></script>
 <script src="lines.js"></script>
 <script src="points.js"></script>
 <script src="inputs.js"></script>
+<script src="info.js"></script>
 </body>
 </html>
