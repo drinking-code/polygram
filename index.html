@@ -12,8 +12,15 @@
 <div id="panel">
     <div id="interactions">
         <input type="range" name="angle" min="0" max="360" value="0" hidden>
-        <input type="range" name="size" min="100" max="622" value="200">
-        <input type="number" name="n" min="3" max="100" value="7" step="1">
+        <div class="slider">
+            <input type="range" name="size" min="100" max="622" value="200">
+            <div class="icon minimize"></div>
+            <div class="icon maximize"></div>
+        </div>
+        <div class="input">
+            <input type="number" name="n" min="3" max="100" value="7" step="1">
+            <div class="icon angle"></div>
+        </div>
     </div>
 
     <div id="name">{7/3}</div>
