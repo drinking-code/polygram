@@ -20,3 +20,7 @@ Node.prototype.trigger = function(event) {
 HTMLElement.prototype.remove = function () {
     this.parentNode.removeChild(this)
 };
+
+String.prototype.isNumeric = function () {
+    return !isNaN(Number(this));
+};

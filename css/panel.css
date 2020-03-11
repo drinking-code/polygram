@@ -65,9 +65,7 @@ input[type=number]:focus {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
-    grid-template-areas:
-            "slider slider"
-            "icon1 icon2";
+    grid-template-areas: "slider slider" "icon1 icon2";
     grid-gap: 10px;
     margin-right: 50px;
 }
@@ -134,4 +132,20 @@ input[type=number]:focus {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#name.focus {
+    color: rgba(var(--color), .5);
+}
+
+#name span {
+    color: rgb(var(--color));
+    outline: none;
+    white-space: nowrap;
+}
+
+#name span:empty:after {
+    content: "0";
+    color: rgba(var(--color), .5);
+    display: inline-block;
 }

@@ -1,11 +1,13 @@
 let step = 1;
 
 function setSteps() {
-    step = Math.round(gram / 2 - 1);
+    const q = $("#q");
+    if (q.innerText < Math.round(gram / 2 - 1)) {
+        step = Number(q.innerText);
+    } else {
+        step = Math.round(gram / 2 - 1);
+    }
 }
-
-const draw = new Event("draw");
-
 
 function getCoords(id) {
     const thisID = id;
@@ -19,7 +21,7 @@ function getCoords(id) {
     } else {
         nextID = thisID + step;
     }
-
+    console.log(nextID, gram, step, thisID)
     const p2 = $("#d-" + nextID);
     const p2x = p2.style.left.replace("px", "");
     const p2y = p2.style.top.replace("px", "") - 200;
@@ -28,7 +30,6 @@ function getCoords(id) {
 }
 
 function drawLines() {
-    setSteps();
     let canvas = $("#canvas");
     if (canvas) {
         canvas.remove();
@@ -53,7 +54,6 @@ function drawLines() {
 setTimeout(drawLines, 10);
 
 function updateLines() {
-    setSteps();
     $$("#canvas line").forEach(elm => {
         const thisID = Number(elm.id.replace("l-", ""));
         //get position of this point and #+2 point

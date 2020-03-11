@@ -1,6 +1,11 @@
 //adaptive scaling
 const sizeSlider = $('input[name="size"]');
 $('input[name="n"]').addEventListener("input", setScalingRange);
+$('input[name="n"]').addEventListener("input", function () {
+    $("#q").innerText = Math.round(gram / 2 - 1).toString();
+    step = Number($("#q").innerText);
+});
+
 function setScalingRange() {
     const capSize = 11000;
     const sizingFactor = 0.00001;
@@ -12,3 +17,53 @@ function setScalingRange() {
     sizeSlider.trigger("change");
     setRadius();
 }
+
+$$("#name span").forEach(elm => {
+    elm.addEventListener("focus", function (e) {
+        elm.parentElement.classList.add("focus");
+        /*if (e.relatedTarget) {
+            //empty span: bug here
+            elm.innerText = "";
+        }*/
+    });
+    elm.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            elm.blur();
+        }
+    });
+    elm.addEventListener("input", function () {
+        if (!elm.innerText.isNumeric()) {
+            elm.innerText = elm.innerText.replace(/([^0-9])/g, "");
+        }
+        elm.children.forEach(elm => {
+            if (typeof elm !== "object") {
+                return
+            }
+            elm.remove();
+        });
+    });
+    elm.addEventListener("blur", function () {
+        if (!elm.innerText) {
+            elm.innerText = "1";
+        }
+        elm.parentElement.classList.remove("focus");
+        setTimeout(getNGram,10);
+    });
+});
+
+$("#p").addEventListener("blur", function (e) {
+    if (e.target.innerText > 100) {
+        e.target.innerText = "100";
+    }
+    gram = e.target.innerText;
+    $('input[name="n"]').value = gram;
+});
+
+$("#q").addEventListener("blur", function (e) {
+    //clip to biggest sane step
+    if (e.target.innerText > Math.round(gram / 2 - 1)) {
+        e.target.innerText = Math.round(gram / 2 - 1).toString();
+    }
+    step = Number(e.target.innerText);
+});
