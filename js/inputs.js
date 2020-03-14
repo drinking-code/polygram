@@ -2,6 +2,7 @@
 const sizeSlider = $('input[name="size"]');
 $('input[name="n"]').addEventListener("input", setScalingRange);
 $('input[name="n"]').addEventListener("input", function () {
+    if (!$('input[name="n"]').value) {return}
     $("#q").innerText = Math.round(gram / 2 - 1).toString();
     step = Number($("#q").innerText);
 });
@@ -48,7 +49,9 @@ $$("#name span").forEach(elm => {
             elm.innerText = "1";
         }
         elm.parentElement.classList.remove("focus");
-        setTimeout(getNGram,10);
+        setTimeout(function() {
+            getNGram(true);
+        },10);
     });
 });
 
@@ -56,7 +59,7 @@ $("#p").addEventListener("blur", function (e) {
     if (e.target.innerText > 100) {
         e.target.innerText = "100";
     }
-    gram = e.target.innerText;
+    gram = Math.max(Number(e.target.innerText), 1);
     $('input[name="n"]').value = gram;
 });
 

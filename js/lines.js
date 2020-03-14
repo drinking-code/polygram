@@ -1,11 +1,11 @@
 let step = 1;
 
-function setSteps() {
+function setSteps(stpSet) {
     const q = $("#q");
-    if (q.innerText < Math.round(gram / 2 - 1)) {
-        step = Number(q.innerText);
+    if (q.innerText < Math.round(gram / 2 - 1) && stpSet) {
+        step = Math.max(Number(q.innerText), 1);
     } else {
-        step = Math.round(gram / 2 - 1);
+        step = Math.max(Math.round(gram / 2 - 1), 1);
     }
 }
 
@@ -21,7 +21,6 @@ function getCoords(id) {
     } else {
         nextID = thisID + step;
     }
-    console.log(nextID, gram, step, thisID)
     const p2 = $("#d-" + nextID);
     const p2x = p2.style.left.replace("px", "");
     const p2y = p2.style.top.replace("px", "") - 200;

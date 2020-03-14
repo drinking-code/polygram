@@ -2,9 +2,12 @@ let gram;
 getNGram();
 $('input[name="n"]').addEventListener("input", getNGram);
 function getNGram(stpSet) {
+    if (!$('input[name="n"]').value) {return}
     gram = $('input[name="n"]').value;
+    $("#p").innerText = gram.toString();
+    if (stpSet !== true) {stpSet = false}
+    setSteps(stpSet);
     setPoints();
-    setSteps();
     drawLines();
 }
 
